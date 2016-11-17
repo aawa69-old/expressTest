@@ -5,11 +5,20 @@ var app = express();
 //	response.sendfile(__dirname + '/public/index.html');	//__dirname rtns executing script directory
 //});
 
-app.use(express.static('public'));  //static middleware serving files from public folder
+var logger = require('./logger');  // require and use the logger.js module
+app.use(logger);				   // 'app.use' adds the module to the stack 	
 
-app.get('/blocks', function(request, response) {
+app.use(express.static('public'));  //static middleware serving files from the 'public' folder
+
+app.get('/blocks', function(request, response) {   // 
 	var blocks = ['Fixed','Movable','Rotating'];
-	response.json(blocks);	// convert to json
+
+	if(request.query.limit >= 0) {  // true when url query param 'limit' > 0
+		response.json(blocks.slice(0,request.query.limit));  // rtn the number of values requested in 'limit'
+	} else {
+		response.json(blocks);	// rtn all values & convert to json
+	}
+
 });
 
 app.listen(3000, function() {
