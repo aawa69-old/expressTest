@@ -1,6 +1,7 @@
 
 body {
-    font-family: "Segoe UI Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: Monaco, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    color: #3d413d;
 }
 a:link, a:visited, a:focus {
     color: #ffffff;
