@@ -8,7 +8,7 @@ $(function() {
 		var blockData = form.serialize();	// jquery: transforms form data to URL encoded notation
 
 		$.ajax({							// use ajax to POST the serailized form input to the /blocks URL
-			type: 'POST', url: '/newBlock', data: blockData
+			type: 'POST', url: '/blocks', data: blockData
 		}).done(function(blockName) {
 			appendToList([blockName]);		// pass newly entered block detail, and append to list output
 			form.trigger('reset');			// cleans up form text input fields
